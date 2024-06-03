@@ -5,7 +5,6 @@ const templates = {
     template2: [
         "Physics", "Chemistry", "Biology", "Mathematics", "Computer Science"
     ]
-    // Add more templates as needed
 };
 
 document.getElementById('template-select').addEventListener('change', updatePlan);
@@ -35,4 +34,13 @@ function updatePlan() {
 
         planContainer.appendChild(dayDiv);
     }
+}
+
+function generateImage() {
+    html2canvas(document.querySelector('main')).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'study-plan.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
 }

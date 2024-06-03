@@ -3,29 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customizable Study Plan</title>
+    <title>Customizable Study Plans</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Choose Your Study Plan Template</h1>
-    <div id="template-container">
-        <select id="template-select">
-            <option value="template1">Template 1</option>
-            <option value="template2">Template 2</option>
-            <!-- Add more templates as needed -->
-        </select>
+    <div class="container mt-5">
+        <header class="text-center">
+            <h1 class="mb-4">Welcome to Customizable Study Plans</h1>
+        </header>
+        <main>
+            <section>
+                <div class="form-group">
+                    <label for="template-select">Choose Your Study Plan Template</label>
+                    <select id="template-select" class="form-control">
+                        <option value="template1">Template 1</option>
+                        <option value="template2">Template 2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="hours-per-day">Hours per Day:</label>
+                    <input type="range" class="form-control-range" id="hours-per-day" name="hours-per-day" min="1" max="12" value="6" oninput="updatePlan()">
+                    <small id="hours-display" class="form-text text-muted">6 hours</small>
+                </div>
+                <div class="form-group">
+                    <label for="days-per-week">Days per Week:</label>
+                    <input type="range" class="form-control-range" id="days-per-week" name="days-per-week" min="1" max="7" value="5" oninput="updatePlan()">
+                    <small id="days-display" class="form-text text-muted">5 days</small>
+                </div>
+                <div id="study-plan" class="mt-4"></div>
+                <button class="btn btn-primary mt-4" onclick="generateImage()">Download Study Plan as Image</button>
+            </section>
+        </main>
     </div>
-    <div id="customization-container">
-        <label for="hours-per-day">Hours per Day:</label>
-        <input type="range" id="hours-per-day" name="hours-per-day" min="1" max="12" value="6" oninput="updatePlan()">
-        <span id="hours-display">6</span> hours
-        <br>
-        <label for="days-per-week">Days per Week:</label>
-        <input type="range" id="days-per-week" name="days-per-week" min="1" max="7" value="5" oninput="updatePlan()">
-        <span id="days-display">5</span> days
-    </div>
-    <div id="study-plan"></div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
