@@ -12,6 +12,7 @@ const subjects = [
 
 document.addEventListener("DOMContentLoaded", function() {
     populateSubjects();
+    populateTemplates();
 });
 
 function populateSubjects() {
@@ -22,6 +23,16 @@ function populateSubjects() {
         option.textContent = subject;
         subjectsSelect.appendChild(option);
     });
+}
+
+function populateTemplates() {
+    const templatesSelect = document.getElementById('template-select');
+    for (let i = 1; i <= 50; i++) {
+        const option = document.createElement('option');
+        option.value = `template${i}`;
+        option.textContent = `Template ${i}`;
+        templatesSelect.appendChild(option);
+    }
 }
 
 function updateSubjectInputs() {
@@ -63,56 +74,4 @@ function toggleDifferentTimes(subject) {
             <input type="number" id="${subject}-${day.toLowerCase()}-time" class="form-control" value="60" min="1">`).join('')}
         `;
     } else {
-        container.innerHTML = '';
-    }
-}
-
-function generateStudyPlan() {
-    const selectedSubjects = Array.from(document.getElementById('subjects-select').selectedOptions).map(option => option.value);
-    const startTime = document.getElementById('start-time').value;
-    const endTime = document.getElementById('end-time').value;
-
-    if (!startTime || !endTime) {
-        alert("Please select start and end times.");
-        return;
-    }
-
-    const studyPlan = [];
-    selectedSubjects.forEach(subject => {
-        const days = [];
-        ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].forEach(day => {
-            if (document.getElementById(`${subject}-${day.toLowerCase()}`).checked) {
-                const time = document.getElementById(`${subject}-diff-times`).checked 
-                    ? document.getElementById(`${subject}-${day.toLowerCase()}-time`).value 
-                    : document.getElementById(`${subject}-time`).value;
-                days.push({ day, time });
-            }
-        });
-        studyPlan.push({ subject, days, task: document.getElementById(`${subject}-task`).value });
-    });
-
-    const planContainer = document.getElementById('study-plan');
-    planContainer.innerHTML = '';
-
-    studyPlan.forEach(({ subject, days, task }) => {
-        const subjectDiv = document.createElement('div');
-        subjectDiv.classList.add('subject-plan');
-        subjectDiv.innerHTML = `<h5>${subject}</h5><p>${task}</p>`;
-        days.forEach(({ day, time }) => {
-            const dayDiv = document.createElement('div');
-            dayDiv.classList.add('day');
-            dayDiv.innerText = `${day}: ${time} minutes`;
-            subjectDiv.appendChild(dayDiv);
-        });
-        planContainer.appendChild(subjectDiv);
-    });
-}
-
-function generateImage() {
-    html2canvas(document.getElementById('study-plan')).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'study-plan.png';
-        link.href = canvas.toDataURL();
-        link.click();
-    });
-}
+        container.innerHTML

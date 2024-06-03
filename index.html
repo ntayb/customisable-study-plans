@@ -15,6 +15,12 @@
         <main>
             <section>
                 <div class="form-group">
+                    <label for="template-select">Select Template</label>
+                    <select id="template-select" class="form-control">
+                        ${Array.from({ length: 50 }, (_, i) => `<option value="template${i + 1}">Template ${i + 1}</option>`).join('')}
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="subjects-select">Select Subjects</label>
                     <select id="subjects-select" class="form-control" multiple onchange="updateSubjectInputs()">
                         <!-- Subject options will be populated by JavaScript -->
@@ -34,8 +40,4 @@
                 <div id="study-plan" class="mt-4"></div>
             </section>
         </main>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="js/script.js"></script>
-</body>
-</html>
+    </​⬤
