@@ -82,7 +82,9 @@ function generateStudyPlan() {
         const days = [];
         ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].forEach(day => {
             if (document.getElementById(`${subject}-${day.toLowerCase()}`).checked) {
-                const time = document.getElementById(`${subject}-diff-times`).checked ? document.getElementById(`${subject}-${day.toLowerCase()}-time`).value : document.getElementById(`${subject}-time`).value;
+                const time = document.getElementById(`${subject}-diff-times`).checked 
+                    ? document.getElementById(`${subject}-${day.toLowerCase()}-time`).value 
+                    : document.getElementById(`${subject}-time`).value;
                 days.push({ day, time });
             }
         });
@@ -102,4 +104,15 @@ function generateStudyPlan() {
             dayDiv.innerText = `${day}: ${time} minutes`;
             subjectDiv.appendChild(dayDiv);
         });
-        planContainer.appendChild
+        planContainer.appendChild(subjectDiv);
+    });
+}
+
+function generateImage() {
+    html2canvas(document.getElementById('study-plan')).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'study-plan.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
