@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+#template-container {
+    margin-bottom: 20px;
+}
+
+#customization-container {
+    margin-bottom: 20px;
+}
+
+#study-plan {
+    margin-top: 20px;
+}
