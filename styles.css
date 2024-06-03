@@ -1,0 +1,46 @@
+body {
+    background-color: #e0f7fa;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+main {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#study-plan {
+    margin-top: 20px;
+}
+
+.day {
+    margin-bottom: 10px;
+}
+
+.hour {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #e0e0e0;
+    margin: 2px;
+    border-radius: 4px;
+}
+
+.subject-detail {
+    margin-bottom: 15px;
+}
+
+/* Template Specific Styles */
+${Array.from({ length: 50 }, (_, i) => `
+.template${i + 1} .hour {
+    background-color: ${`#${Math.floor(Math.random() * 16777215).toString(16)}`};
+}`).join('')}
