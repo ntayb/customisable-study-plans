@@ -1,5 +1,5 @@
 body {
-    background-color: #f7f9fc;
+    background-color: #e0f7fa;
 }
 
 header {
@@ -34,3 +34,13 @@ main {
     margin: 2px;
     border-radius: 4px;
 }
+
+.subject-detail {
+    margin-bottom: 15px;
+}
+
+/* Template Specific Styles */
+${Array.from({ length: 50 }, (_, i) => `
+.template${i + 1} .hour {
+    background-color: ${`#${Math.floor(Math.random() * 16777215).toString(16)}`};
+}`).join('')}
