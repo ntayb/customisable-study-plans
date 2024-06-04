@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+k<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,7 @@
     <title>Customizable Study Plans</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -47,8 +48,15 @@
                 </div>
                 <div class="form-group">
                     <label for="subjects-select">Select Subjects</label>
-                    <select id="subjects-select" class="form-control" multiple onchange="updateSubjectInputs()">
-                        <!-- Subject options will be populated by JavaScript -->
+                    <select id="subjects-select" class="form-control" multiple onchange="updateSubjectDetails()">
+                        <option value="Math">Math</option>
+                        <option value="English">English</option>
+                        <option value="Science">Science</option>
+                        <option value="History">History</option>
+                        <option value="Geography">Geography</option>
+                        <option value="Art">Art</option>
+                        <option value="Music">Music</option>
+                        <option value="PE">PE</option>
                     </select>
                 </div>
                 <div id="subject-details-container"></div>
@@ -56,21 +64,15 @@
                     <label for="start-time">Start Time:</label>
                     <input type="time" id="start-time" class="form-control">
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-4">
                     <label for="end-time">End Time:</label>
                     <input type="time" id="end-time" class="form-control">
                 </div>
-                <button class="btn btn-primary mt-4" onclick="generateStudyPlan()">Generate Study Plan</button>
-                <button class="btn btn-secondary mt-4" onclick="generateImage()">Download Study Plan as Image</button>
-                <div id="study-plan" class="mt-4 table-responsive"></div>
+                <button onclick="generateStudyPlan()" class="btn btn-primary mt-4">Generate Study Plan</button>
+                <div id="study-plan" class="mt-5"></div>
             </section>
         </main>
     </div>
-    <footer class="text-center mt-5">
-        <p>&copy; 2024 Study Planner. All rights reserved.</p>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="js/script.js"></script>
 </body>
 </html>
 
