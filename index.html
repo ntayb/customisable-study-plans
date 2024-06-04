@@ -23,7 +23,11 @@
                 </select>
 
                 <label for="subjects">Select Subjects:</label>
-                <input type="text" id="subjects" name="subjects" placeholder="Enter subjects separated by commas">
+                <div id="subjects-container">
+                    <input type="text" id="subject-input" placeholder="Enter a subject">
+                    <button type="button" id="add-subject">Add Subject</button>
+                </div>
+                <ul id="subject-list"></ul>
 
                 <label for="start-time">Start Time:</label>
                 <input type="time" id="start-time" name="start-time">

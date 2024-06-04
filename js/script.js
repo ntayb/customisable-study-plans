@@ -1,8 +1,30 @@
+document.getElementById('add-subject').addEventListener('click', addSubject);
 document.getElementById('generate-plan').addEventListener('click', generatePlan);
+
+function addSubject() {
+    const subjectInput = document.getElementById('subject-input');
+    const subject = subjectInput.value.trim();
+    if (subject) {
+        const li = document.createElement('li');
+        li.textContent = subject;
+        li.appendChild(createRemoveButton());
+        document.getElementById('subject-list').appendChild(li);
+        subjectInput.value = '';
+    }
+}
+
+function createRemoveButton() {
+    const button = document.createElement('button');
+    button.textContent = 'Remove';
+    button.addEventListener('click', () => {
+        button.parentElement.remove();
+    });
+    return button;
+}
 
 function generatePlan() {
     const template = document.getElementById('template').value;
-    const subjects = document.getElementById('subjects').value.split(',').map(s => s.trim());
+    const subjects = Array.from(document.getElementById('subject-list').children).map(li => li.textContent.replace('Remove', '').trim());
     const startTime = document.getElementById('start-time').value;
     const endTime = document.getElementById('end-time').value;
 
@@ -46,3 +68,4 @@ document.getElementById('download-plan').addEventListener('click', () => {
         link.download = 'study-plan.png';
         link.click();
     });
+});
