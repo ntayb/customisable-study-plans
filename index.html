@@ -3,81 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create and customize your study plans effortlessly.">
     <title>Customizable Study Plans</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Study Planner</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Templates</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container mt-5">
-        <header class="text-center">
-            <h1 class="mb-4">Welcome to Customizable Study Plans</h1>
-        </header>
-        <main>
-            <section>
-                <div class="form-group">
-                    <label for="template-select">Select Template</label>
-                    <select id="template-select" class="form-control">
-                        <option value="template1">Template 1</option>
-                        <option value="template2">Template 2</option>
-                        <option value="template3">Template 3</option>
-                        <option value="template4">Template 4</option>
-                        <option value="template5">Template 5</option>
-                        <option value="template6">Template 6</option>
-                        <option value="template7">Template 7</option>
-                        <option value="template8">Template 8</option>
-                        <option value="template9">Template 9</option>
-                        <option value="template10">Template 10</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="subjects-select">Select Subjects</label>
-                    <select id="subjects-select" class="form-control" multiple>
-                        <option value="MATH">MATH</option>
-                        <option value="ENGL">ENGL</option>
-                        <option value="SCI">SCI</option>
-                        <option value="HIST">HIST</option>
-                        <option value="GEO">GEO</option>
-                        <option value="PE">PE</option>
-                        <option value="ART">ART</option>
-                        <option value="MUS">MUS</option>
-                        <option value="IT">IT</option>
-                        <option value="BUS">BUS</option>
-                    </select>
-                </div>
-                <div id="subject-details-container"></div>
-                <div class="form-group mt-4">
-                    <label for="start-time">Start Time:</label>
-                    <input type="time" id="start-time" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="end-time">End Time:</label>
-                    <input type="time" id="end-time" class="form-control">
-                </div>
-                <button class="btn btn-primary mt-3" onclick="generateStudyPlan()">Generate Study Plan</button>
-            </section>
-            <section class="mt-5">
-                <h2>Study Plan</h2>
-                <div id="study-plan"></div>
-            </section>
-        </main>
-    </div>
-    <script src="js/script.js"></script>
+    <header>
+        <h1>Customizable Study Plans</h1>
+        <p>Plan your study schedule effectively</p>
+    </header>
+    <main>
+        <section id="plan-form">
+            <h2>Create Your Study Plan</h2>
+            <form id="study-plan-form">
+                <label for="template">Choose a Template:</label>
+                <select id="template" name="template">
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+
+                <label for="subjects">Select Subjects:</label>
+                <input type="text" id="subjects" name="subjects" placeholder="Enter subjects separated by commas">
+
+                <label for="start-time">Start Time:</label>
+                <input type="time" id="start-time" name="start-time">
+
+                <label for="end-time">End Time:</label>
+                <input type="time" id="end-time" name="end-time">
+
+                <button type="button" id="generate-plan">Generate Plan</button>
+            </form>
+        </section>
+        <section id="plan-result" hidden>
+            <h2>Your Study Plan</h2>
+            <div id="study-plan"></div>
+            <button id="download-plan">Download Plan</button>
+        </section>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
-
