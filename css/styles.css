@@ -1,4 +1,4 @@
-kbody {
+body {
     background-color: #f0f4f7;
     font-family: Arial, sans-serif;
 }
@@ -48,4 +48,29 @@ main {
 .template8 .hour { background-color: #ccff99; }
 .template9 .hour { background-color: #99ccff; }
 .template10 .hour { background-color: #ffff99; }
+
+/* Additional styling for better appearance */
+.navbar {
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.btn {
+    margin-right: 10px;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
 

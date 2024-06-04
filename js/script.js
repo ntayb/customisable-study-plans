@@ -68,7 +68,35 @@ function updateSubjectInputs() {
 function toggleDifferentTimes(subject) {
     const container = document.getElementById(`${subject}-times-container`);
     if (document.getElementById(`${subject}-diff-times`).checked) {
-        container.innerHTML =Here is the complete JavaScript code to ensure the study plan is generated in a table format with multiple subject selection and a visually appealing structure:
+        container.innerHTML = `
+            ${['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => `
+            <label for="${subject}-${day.toLowerCase()}-time">Study Time on ${day} (minutes):</label>
+            <input type="number" id="${subject}-${day.toLowerCase()}-time" class="form-control" value="60" min="1">`).join('')}
+        `;
+    } else {
+        container.innerHTML = '';
+    }
+}
+
+function generateStudyPlan() {
+    const selectedSubjects = Array.from(document.getElementById('subjects-select').selectedOptions).map(option => option.value);
+    const startTime = document.getElementById('start-time').value;
+    const endTime = document.getElementById('end-time').value;
+    const template = document.getElementById('template-select').value;
+
+    if (!startTime || !endTime) {
+        alert("Please select start and end times.");
+        return;
+    }
+
+    const studyPlan = [];
+    selectedSubjects.forEach(subject => {
+        const days = [];
+        ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].forEach(day => {
+            if (document.getElementById(`${subject}-${day.toLowerCase()}`).checked) {
+                const time = document.getElementById(`${subject}-diff-times`).checked 
+                    ? document.getElementById(`${subject}-${day.toLowerCase()}-time`).value 
+                   Here's the corrected and complete JavaScript code to ensure the study plan is generated in a table format with multiple subject selection and a visually appealing structure:
 
 ### JavaScript (`js/script.js`)
 
