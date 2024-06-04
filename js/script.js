@@ -1,5 +1,3 @@
-// js/script.js
-
 document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('template-select').addEventListener('change', generateStudyPlan);
     document.getElementById('subjects-select').addEventListener('change', updateSubjectDetails);

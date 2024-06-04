@@ -1,76 +1,21 @@
 body {
-    background-color: #f0f4f7;
+    background-color: #f9f9f9;
     font-family: Arial, sans-serif;
 }
 
-header {
-    background-color: #007bff;
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-main {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#study-plan {
-    margin-top: 20px;
-}
-
-.table-responsive {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-}
-
-.day, .hour {
-    text-align: center;
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-.subject-plan {
-    margin-bottom: 15px;
-}
-
-/* Template Specific Styles */
-.template1 .hour { background-color: #ff9999; }
-.template2 .hour { background-color: #99ff99; }
-.template3 .hour { background-color: #9999ff; }
-.template4 .hour { background-color: #ffcc99; }
-.template5 .hour { background-color: #99ffcc; }
-.template6 .hour { background-color: #cc99ff; }
-.template7 .hour { background-color: #ff99cc; }
-.template8 .hour { background-color: #ccff99; }
-.template9 .hour { background-color: #99ccff; }
-.template10 .hour { background-color: #ffff99; }
-
-/* Additional styling for better appearance */
 .navbar {
     margin-bottom: 20px;
 }
 
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+h1, h2 {
+    color: #333;
+}
+
+.table {
+    margin-top: 20px;
 }
 
 .form-group {
-    margin-bottom: 20px;
-}
-
-.btn {
-    margin-right: 10px;
-}
-
-footer {
-    margin-top: 50px;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-top: 1px solid #e9ecef;
+    margin-bottom: 15px;
 }
 
