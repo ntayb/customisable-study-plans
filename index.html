@@ -33,7 +33,16 @@
                 <div class="form-group">
                     <label for="template-select">Select Template</label>
                     <select id="template-select" class="form-control">
-                        ${Array.from({ length: 50 }, (_, i) => `<option value="template${i + 1}">Template ${i + 1}</option>`).join('')}
+                        <option value="template1">Template 1</option>
+                        <option value="template2">Template 2</option>
+                        <option value="template3">Template 3</option>
+                        <option value="template4">Template 4</option>
+                        <option value="template5">Template 5</option>
+                        <option value="template6">Template 6</option>
+                        <option value="template7">Template 7</option>
+                        <option value="template8">Template 8</option>
+                        <option value="template9">Template 9</option>
+                        <option value="template10">Template 10</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -53,7 +62,7 @@
                 </div>
                 <button class="btn btn-primary mt-4" onclick="generateStudyPlan()">Generate Study Plan</button>
                 <button class="btn btn-secondary mt-4" onclick="generateImage()">Download Study Plan as Image</button>
-                <div id="study-plan" class="mt-4"></div>
+                <div id="study-plan" class="mt-4 table-responsive"></div>
             </section>
         </main>
     </div>
@@ -64,3 +73,4 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
