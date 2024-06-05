@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Create and customize your study plans effortlessly.">
@@ -22,7 +22,7 @@
                     <option value="monthly">Monthly</option>
                 </select>
 
-                <label for="subjects">Select Subjects:</label>
+                <label for="subject-input">Select Subjects:</label>
                 <div id="subjects-container">
                     <input type="text" id="subject-input" placeholder="Enter a subject">
                     <button type="button" id="add-subject">Add Subject</button>
@@ -44,6 +44,77 @@
             <button id="download-plan">Download Plan</button>
         </section>
     </main>
-    <script src="script.js"></script>
-</body>
-</html>
+    <script>
+        document.getElementById('add-subject').addEventListener('click', addSubject);
+        document.getElementById('generate-plan').addEventListener('click', generatePlan);
+
+        function addSubject() {
+            const subjectInput = document.getElementById('subject-input');
+            const subject = subjectInput.value.trim();
+            if (subject) {
+                const li = document.createElement('li');
+                li.textContent = subject;
+                li.appendChild(createRemoveButton());
+                document.getElementById('subject-list').appendChild(li);
+                subjectInput.value = '';
+            }
+        }
+
+        function createRemoveButton() {
+            const button = document.createElement('button');
+            button.textContent = 'Remove';
+            button.addEventListener('click', () => {
+                button.parentElement.remove();
+            });
+            return button;
+        }
+
+        function generatePlan() {
+            const template = document.getElementById('template').value;
+            const subjects = Array.from(document.getElementById('subject-list').children).map(li => li.textContent.replace('Remove', '').trim());
+            const startTime = document.getElementById('start-time').value;
+            const endTime = document.getElementById('end-time').value;
+
+            if (!validateForm(template, subjects, startTime, endTime)) {
+                alert('Please fill out all fields correctly.');
+                return;
+            }
+
+            const plan = createStudyPlan(template, subjects, startTime, endTime);
+            displayPlan(plan);
+        }
+
+        function validateForm(template, subjects, startTime, endTime) {
+            return template && subjects.length > 0 && startTime && endTime;
+        }
+
+        function createStudyPlan(template, subjects, startTime, endTime) {
+            return subjects.map(subject => `${subject}: ${startTime} - ${endTime}`);
+        }
+
+        function displayPlan(plan) {
+            const planResult = document.getElementById('plan-result');
+            const studyPlanDiv = document.getElementById('study-plan');
+            studyPlanDiv.innerHTML = '';
+
+            plan.forEach(item => {
+                const p = document.createElement('p');
+                p.textContent = item;
+                studyPlanDiv.appendChild(p);
+            });
+
+            planResult.hidden = false;
+        }
+
+        document.getElementById('download-plan').addEventListener('click', () => {
+            const studyPlanDiv = document.getElementById('study-plan');
+            html2canvas(studyPlanDiv).then(canvas => {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL();
+                link.download = 'study-plan.png';
+                link.click();
+            });
+        });
+
+        // Include html2canvas code directly here
+        !function(t,n){var e="object"==typeof self&&self.self===self&&self||"object"==typeof global&&global.global===global&&global;"function"==typeof define&&define.amd?define([],function(){return n(e)}):"object"==typeof module&&module.exports?module.exports=n(e):t.html2canvas=n(e)}(this,function(t){function n(t,n){function e(n){n&&d.push(n),0==--y&&t(d)}var i,s,u=Object.keys(n);for(i=u.length,y=i;0<i--;)s=u[i],n[s](e)}var e="1.4.1",i="undefined"!=typeof ArrayBuffer&&void 0===Uint8Array.prototype.slice;function s(t,n,e,i,s){t.forEach(function(t){t&&(t.nodeType&&n.contains(t)||e&&e(t)||s&&s(t)&&i.push(t))})}function u(t){return"[object Array]"==Object.prototype.toString.call(t)}function a(t){return"[object Number]"==Object.prototype.toString.call(t)}function c(t){return void 0!==t&&null!==t}function o(t){return c(t.length)?t.length:0}function l(t,n,e,i,s){this.src=t,this.x=n||0,this.y=e||0,this.width=i||0,this.height=s||0}function f(t,n){return new t.constructor(n)}function d(t){var n=new t.constructor(t.byteLength);return new Uint8Array(n).set(new Uint8Array(t)),n}function h(t,n){for(var e=0;e<t.length;e++)n(t[e],e)}function p(t){return!t||"transparent"===t||"none"===t||"hidden"===t}function m(t){return t.replace(/^[^a-zA-Z]+|[^a-zA-Z0-9]+$/g,"")}function g(t){return t.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/'/g,"&apos;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}function v(t){if(null==t)return"";for(var n=0,e=0;e<t.length;e++){var i=t.charCodeAt(e);i<128?n++:i<2048?n+=2:55296==(64512&i)&&56320==(64512&t.charCodeAt(e+1))?(n+=4,e++):n+=3}return n}function _(t){return encodeURIComponent(t).replace(/[!'()*]/g,function(t){return"%"+t.charCodeAt(0).toString(16).toUpperCase()})}function b(t){return/^(input|select|textarea)$/i.test(t.tagName)}function y(t){return t instanceof SVGElement}function w(t){return t instanceof HTMLCanvasElement}function x(t){return t instanceof HTMLImageElement}function E(t){return t instanceof HTMLIFrameElement}function T(t,n){return t.cssText=n,t}function S(t,n){return t.apply(n)}function C(t,n){return function(e){return t.call(n,e)}}function k(t){return 1==t.nodeType?t:9==t.nodeType?t.documentElement:null}function j(t,n){return k(t)&&k(n)}function M(t,n){return-1!==t.indexOf(n)}function O(t,n){return t.replace(/\s\s+/g," ").split(" ").filter(function(t){return-1===n.indexOf(t)})}function A(t,n){return parseFloat(t)?n:""}function F(t,n){var e="none";if(t.currentStyle)e=t.currentStyle[n];else if(window.getComputedStyle){var i=window.getComputedStyle(t,n);i&&(e=i.getPropertyValue(n)||i[n])}return e}function D(t,n){return t.getPropertyValue(n)||t[n]}function P(t){var n=t.parentNode;return n.removeChild(t),n}function H(t,n,e){var i=new Image;i.onload=function(){e(i)},i.onerror=function(){e(!1)},i.src=n}function L(t,n){for(var e=0;e<t.length;e++)if(t[e]===n)return!0;return!1}function B(t,n){return L(Array.prototype.slice.call(t.classList),n)}function I(t,n){return-1!==t.className.indexOf(n)}function R(t){return""==t||p(t)||"none"===t||/rgba\((?:\d{1,3},\s?){3}0\)/.test(t)||/(url\(.*\)|linear-gradient\(.*\))/.test(t)}function W(t,n){return a(t)?t:a(n)?n:(t&&n?parseInt(t,10):t||n||0)}function

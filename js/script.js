@@ -42,7 +42,6 @@ function validateForm(template, subjects, startTime, endTime) {
 }
 
 function createStudyPlan(template, subjects, startTime, endTime) {
-    // Placeholder logic for creating a study plan
     return subjects.map(subject => `${subject}: ${startTime} - ${endTime}`);
 }
 
